@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cinntra.indo.R;
 import com.cinntra.indo.activities.LedgerCutomerDetails;
 import com.cinntra.indo.activities.ParticularBpCreditNoteActivity;
+import com.cinntra.indo.activities.ParticularCustomerReceiptInfo;
 import com.cinntra.indo.activities.PendingOrderSubListActivity;
 import com.cinntra.indo.adapters.PurchaseLedgerAdapter;
 import com.cinntra.indo.adapters.ReceiptLedgerAdapter;
@@ -167,6 +168,14 @@ public class Customer_Summary extends Fragment implements View.OnClickListener, 
     @BindView(R.id.headingPendingSaleOrder)
     TextView headingPendingSaleOrder;
 
+    //todo new changes after update code
+    @BindView(R.id.purchase_receivable_txt)
+    TextView purchase_receivable_txt;
+
+
+    @BindView(R.id.purchase_receiptLay)
+    LinearLayout purchase_receiptLay;
+
 
     RelativeLayout relativeCalView;
 
@@ -236,6 +245,19 @@ public class Customer_Summary extends Fragment implements View.OnClickListener, 
         receiptLay.setOnClickListener(this);
         receivableLay.setOnClickListener(this);
         purchaseLay.setOnClickListener(this);
+        purchase_receiptLay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=  new Intent(requireActivity(), ParticularCustomerReceiptInfo.class);
+                i.putExtra("FromWhere","ReceiptLedger");
+                i.putExtra("cardCode",cardCode);
+                i.putExtra("cardName",cardName);
+                i.putExtra("startDate","");
+                i.putExtra("endDate","");
+
+                requireActivity().startActivity(i);
+            }
+        });
 
 
         if (Prefs.getString(Globals.forSalePurchase, "").equalsIgnoreCase(Globals.Purchase)) {
@@ -244,12 +266,15 @@ public class Customer_Summary extends Fragment implements View.OnClickListener, 
             headingPendingSaleOrder.setText("Pending Order");
             receivable_txt.setText("Payable");
             headingCreditNote.setText("Debit Note");
+            //todo new change for debit note
+            purchase_receivable_txt.setText("Debit Return");
         } else {
             sale_txt.setText("Sales");
             receipt_txt.setText("Receipt");
             headingPendingSaleOrder.setText("Pending Sale Order");
             receivable_txt.setText("Receivables");
             headingCreditNote.setText("Credit Note");
+            purchase_receivable_txt.setText("Debit Return");
         }
 
         ibOverviewArrow.setOnClickListener(view -> {

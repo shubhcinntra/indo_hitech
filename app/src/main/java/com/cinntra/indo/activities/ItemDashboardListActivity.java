@@ -404,6 +404,17 @@ public class ItemDashboardListActivity extends AppCompatActivity {
                     hde.put("OrderByAmt", "");
                     hde.put("OrderByName", "");
                     hde.put("SalesEmployeeCode", Prefs.getString(Globals.SalesEmployeeCode,""));
+                }else if (fromwhere.equalsIgnoreCase("zonedirect")){
+
+                    hde.put("PageNo", String.valueOf(pageNo));
+                    hde.put("MaxSize", String.valueOf(Globals.QUERY_PAGE_SIZE));
+                    hde.put("SearchText", searchValue);
+                    hde.put("FromDate", startDate);
+                    hde.put("ToDate", endDate);
+                    hde.put("Zone", zoneCode);
+                    hde.put("OrderByAmt", "");
+                    hde.put("OrderByName", "");
+                    hde.put("SalesEmployeeCode", Prefs.getString(Globals.SalesEmployeeCode,""));
                 }else if (fromwhere.equalsIgnoreCase("zoneStock")){
 
                     hde.put("PageNo", String.valueOf(pageNo));

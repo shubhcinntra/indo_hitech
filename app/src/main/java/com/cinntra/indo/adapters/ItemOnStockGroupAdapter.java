@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.cinntra.indo.R;
 import com.cinntra.indo.activities.CategoryListFromZoneItemsActivity;
+import com.cinntra.indo.activities.ItemDashboardListActivity;
 import com.cinntra.indo.activities.SubGroupStockActivity;
 import com.cinntra.indo.globals.Globals;
 import com.cinntra.indo.model.QuotationResponse;
@@ -152,38 +153,62 @@ public class ItemOnStockGroupAdapter extends RecyclerView.Adapter<ItemOnStockGro
                     context.startActivity(i);
                 }
                 else if (flag.equalsIgnoreCase("Sales")){
-                    Intent i = new Intent(context, SubGroupStockActivity.class);
+                    /*Intent i = new Intent(context, SubGroupStockActivity.class);
                     i.putExtra("fromwhere", "fromSaleCategory");
                     i.putExtra("zoneName", "");
                     i.putExtra("ItemGroupCode", "" + branchList.get(getAdapterPosition()).getGroupCode());
                     i.putExtra("ItemGroupName", "" + branchList.get(getAdapterPosition()).getGroupName());
-                    context.startActivity(i);
-                   /* Intent i = new Intent(context, ItemDashboardListActivity.class);
+                    context.startActivity(i);*/
+
+                    Intent i = new Intent(context, ItemDashboardListActivity.class);
                     i.putExtra("fromwhere", "");
                     i.putExtra("ItemGroupCode", "" + branchList.get(getAdapterPosition()).getGroupCode());
                     i.putExtra("ItemGroupName", "" + branchList.get(getAdapterPosition()).getGroupName());
-                    context.startActivity(i);*/
+                    context.startActivity(i);
                 }else if (flag.equalsIgnoreCase("zoneSub")){
-                    Intent i = new Intent(context, SubGroupStockActivity.class);
+                 /*   Intent i = new Intent(context, SubGroupStockActivity.class);
                     i.putExtra("fromwhere", "zonesub");
                     i.putExtra("zoneName", zoneCode);
                     i.putExtra("ItemGroupCode", "" + branchList.get(getAdapterPosition()).getGroupCode());
                     i.putExtra("ItemGroupName", "" + branchList.get(getAdapterPosition()).getGroupName());
+                    context.startActivity(i);*/
+                    Intent i = new Intent(context, ItemDashboardListActivity.class);
+                    i.putExtra("fromwhere", "zonedirect");
+                    i.putExtra("ItemGroupCode", "" + branchList.get(getAdapterPosition()).getGroupCode());
+                    i.putExtra("ItemGroupName", "" + branchList.get(getAdapterPosition()).getGroupName());
+                    i.putExtra("zoneCode", zoneCode);
                     context.startActivity(i);
+
+
                 }else if (flag.equalsIgnoreCase("zoneStock")){
-                    Intent i = new Intent(context, SubGroupStockActivity.class);
+                    //todo commented for removal of subgroup
+                   /* Intent i = new Intent(context, SubGroupStockActivity.class);
                     i.putExtra("fromwhere", "zoneStock");
                     i.putExtra("zoneName", zoneCode);
                     i.putExtra("ItemGroupCode", "" + branchList.get(getAdapterPosition()).getGroupCode());
                     i.putExtra("ItemGroupName", "" + branchList.get(getAdapterPosition()).getGroupName());
+                    context.startActivity(i);*/
+                    Intent i = new Intent(context, ItemDashboardListActivity.class);
+                    i.putExtra("fromwhere", "zonedirect");
+                    i.putExtra("ItemGroupCode", "" + branchList.get(getAdapterPosition()).getGroupCode());
+                    i.putExtra("ItemGroupName", "" + branchList.get(getAdapterPosition()).getGroupName());
+                    i.putExtra("zoneCode", zoneCode);
                     context.startActivity(i);
+
+
                 }
                 else {
-                    Intent i = new Intent(context, SubGroupStockActivity.class);
+                  /*  Intent i = new Intent(context, SubGroupStockActivity.class);
                     i.putExtra("fromwhere", "");
                     i.putExtra("zoneName", "");
                     i.putExtra("ItemGroupCode", "" + branchList.get(getAdapterPosition()).getGroupCode());
+                    i.putExtra("ItemGroupName", "" + branchList.get(getAdapterPosition()).getGroupName());*/
+
+                    Intent i = new Intent(context, ItemDashboardListActivity.class);
+                    i.putExtra("fromwhere", "");
+                    i.putExtra("ItemGroupCode", "" + branchList.get(getAdapterPosition()).getGroupCode());
                     i.putExtra("ItemGroupName", "" + branchList.get(getAdapterPosition()).getGroupName());
+                    i.putExtra("zoneCode", zoneCode);
                     context.startActivity(i);
                 }
 
